@@ -1,0 +1,13 @@
+name = "ForsetiEnrichment"
+uuid = "89458b06-1f31-494e-82d7-31dc89a5f200"
+authors = ["Natapol Pornputtapong <2310273+natapol@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+ForsetiCore = "9196eadf-2320-4495-bab9-b6d9bba2964b"
+ForsetiOmicsCore = "0ff5aa61-c3bd-47f5-8e8b-b3ec9397e2e4"
+
+[compat]
+ForsetiCore = "0.1"
+ForsetiOmicsCore = "0.1"
+julia = "1.10"
