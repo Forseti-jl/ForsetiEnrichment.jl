@@ -16,8 +16,7 @@ yet registered and must be added via local dev paths:
 
 ```julia
 using Pkg
-Pkg.develop(path="../ForsetiCore.jl")
-Pkg.develop(path="../ForsetiOmicsCore.jl")
-Pkg.develop(path=".")
-Pkg.test("ForsetiEnrichment")
+Pkg.develop([PackageSpec(path="../ForsetiCore.jl"), PackageSpec(path="../ForsetiOmicsCore.jl")])
+Pkg.instantiate()
+Pkg.test()
 ```
