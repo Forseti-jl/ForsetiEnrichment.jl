@@ -4,10 +4,17 @@ authors = ["Natapol Pornputtapong <2310273+natapol@users.noreply.github.com>"]
 version = "0.1.0"
 
 [deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 ForsetiCore = "9196eadf-2320-4495-bab9-b6d9bba2964b"
 ForsetiOmicsCore = "0ff5aa61-c3bd-47f5-8e8b-b3ec9397e2e4"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 
 [compat]
+DataFrames = "1"
+Distributions = "0.25"
 ForsetiCore = "0.1"
 ForsetiOmicsCore = "0.1"
+Statistics = "1"
 julia = "1.10"
