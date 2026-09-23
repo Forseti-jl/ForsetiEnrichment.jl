@@ -62,6 +62,27 @@ Over-representation analysis: for each gene set, an exact one-sided
 hypergeometric test of whether `sig_genes` overlap it more than expected
 by chance, given `background` (the gene universe; if omitted, the union of
 all genes across `gene_sets` is used).
+
+# Formula
+
+For background size `N`, `K` significant genes, gene set size `n`, and
+observed overlap `k`:
+
+```
+p = P(X ≥ k),   X ~ Hypergeometric(N, K, n)
+```
+
+equivalent to a one-sided Fisher's exact test on the 2x2 table of
+(in set / not in set) x (significant / not significant). Cross-checked
+against an independent combinatorial derivation via `binomial()` (not
+just `Distributions.Hypergeometric`) in `ForsetiTutorials.jl`'s R
+cross-validation tutorial.
+
+# References
+
+Fisher, R. A. (1922). On the interpretation of χ² from contingency
+tables, and the calculation of P. *Journal of the Royal Statistical
+Society*, 85(1), 87–94.
 """
 function enrich_ora(sig_genes::AbstractVector{<:AbstractString},
                      gene_sets::AbstractDict{<:AbstractString,<:V};
@@ -173,6 +194,30 @@ classic weighted Kolmogorov-Smirnov statistic from Subramanian et al.
 2005, with exponent `weight`), then a p-value is obtained by comparing ES
 to a null distribution built from `n_perm` random gene sets of the same
 size (gene-set permutation).
+
+# Formula
+
+Walking the `N` ranked genes in order, with `Nh` "hit" genes (members of
+the set), `p_hit` step size `|score_i|^weight / Σ_{j∈hits} |score_j|^weight`
+and `p_miss` step size `1/(N-Nh)`:
+
+```
+running += hit(i) ? p_hit(i) : -p_miss
+ES = the running value of maximum absolute magnitude over the walk
+```
+
+`ES = ±1` exactly when all `Nh` hits are at the very top (or very
+bottom) of the ranked list — this exact-extreme property is what this
+package's own tests verify by hand. Significance is empirical: `n_perm`
+random `Nh`-sized position sets give a null distribution of ES values,
+and `p = (#{|ES_perm| ≥ |ES|} + 1) / (n_perm + 1)`.
+
+# References
+
+Subramanian, A., Tamayo, P., Mootha, V. K., et al. (2005). Gene set
+enrichment analysis: a knowledge-based approach for interpreting
+genome-wide expression profiles. *Proceedings of the National Academy of
+Sciences*, 102(43), 15545–15550.
 """
 function enrich_gsea(genes::AbstractVector{<:AbstractString}, scores::AbstractVector{<:Real},
                       gene_sets::AbstractDict{<:AbstractString,<:V};
