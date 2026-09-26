@@ -2,7 +2,7 @@
 
 Gene set enrichment and over-representation analysis.
 
-Part of the [Forseti](https://github.com/natapol) statistical analysis package family.
+Part of the [Forseti](https://github.com/Forseti-jl) statistical analysis package family.
 
 ## Usage
 
