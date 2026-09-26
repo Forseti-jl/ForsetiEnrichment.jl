@@ -1,0 +1,5 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+ForsetiCore = "9196eadf-2320-4495-bab9-b6d9bba2964b"
+ForsetiEnrichment = "89458b06-1f31-494e-82d7-31dc89a5f200"
+ForsetiOmicsCore = "0ff5aa61-c3bd-47f5-8e8b-b3ec9397e2e4"
